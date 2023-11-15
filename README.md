@@ -9,7 +9,7 @@ This is a React JS project. It creates the UI for a movie app using data from th
 You will need to have node js installed on your system.
 
 ## Install
-Clone the repository 
+Clone the repository https://github.com/TeddyMuli/React-Movie-App.git
 
 ## Run
 To run the app navigate to the project folder and run 'npm start' on your terminal.
