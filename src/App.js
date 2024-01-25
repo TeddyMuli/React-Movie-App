@@ -1,56 +1,21 @@
 import React, { useState, useEffect } from "react";
-import './App.css';
-import MovieCard from "./movie_card";
-import SearchIcon from './search.svg';
-
-const API_URL = "http://www.omdbapi.com?apikey=b6003d8a";
 
 const App = () => {
-
-    const [movies, setMovies] = useState([]);
-    const [searchTerm, setsearchTerm] = useState('');
-
-    const searchMovies = async (title) => {
-        const response = await fetch(`${API_URL}&s=${title}`);
-        const data = await response.json();
-
-        setMovies(data.Search);
-    }
+    const [count, setCount] = useState(0);
+    const [calculation, setCalculation] = useState(0);
 
     useEffect(() => {
-        searchMovies('superman');
-    }, []);
+        setCalculation(() => count * 2);
+    }, [count]);
 
     return (
-        <div className="app">
-            <h1>MovieApp</h1>
-
-            <div className="search">
-                <input 
-                    placeholder="Search for Movies"
-                    value={searchTerm}
-                    onChange={(e) => setsearchTerm(e.target.value)}
-                />
-
-                <img
-                    src={SearchIcon}
-                    alt="search"
-                    onClick={() => searchMovies(searchTerm)}
-                />
-            </div>
-
-            {movies?.length > 0 ? (
-                <div className="container">
-                    {movies.map((movie) => (
-                        <MovieCard movie={movie}/>
-                    ))}
-                </div>
-            ) : (
-                <div className="empty">
-                    <h2>No movies found!</h2>
-                </div>
-            )}   
+        <div className="App">
+            <p>Count: {count}</p>
+            <button onClick={() => setCount((c) => c + 1)}>+</button>
+            <p>Calculation: {calculation}</p>
         </div>
+
     );
 }
+
 export default App;
